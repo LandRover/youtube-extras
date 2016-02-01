@@ -71,7 +71,7 @@ var startExport = function() {
             title = jQuery(item).find('.yt-lockup-title a').html(),
             href = jQuery(item).find('.yt-lockup-title a').attr('href');
             
-        href = 'https://youtube.com' + href.substr(0, href.indexOf('&'));
+        href = 'https://www.youtube.com' + href.substr(0, href.indexOf('&'));
         console.log([number +' - '+ title, href]);
     });
 };
