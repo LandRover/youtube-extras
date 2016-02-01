@@ -40,17 +40,17 @@ var numberEpisodes = function() {
 
     listItems.each(function(idx, item) {
         var number = totalFound - idx,
-            obj = $(item).find('.yt-lockup-meta-info');
+            obj = jQuery(item).find('.yt-lockup-meta-info');
         
-        $(item).find('a').attr('href',  $(item).find('a').attr('href') +'&id='+ number+ '&t='+$(item).find('.yt-lockup-title a').html()); 
-        obj.prepend($('<li>'+number+'</li>'))
+        jQuery(item).find('a').attr('href',  jQuery(item).find('a').attr('href') +'&id='+ number+ '&t='+jQuery(item).find('.yt-lockup-title a').html()); 
+        obj.prepend(jQuery('<li>'+number+'</li>'))
     });
     
     return totalFound;
 };
 
 var startNumbering = function(callback) {
-    var btn = $('#calcButton')
+    var btn = jQuery('#calcButton')
                 .attr('disabled', true)
                 .html('Loading pages...');
     
