@@ -39,10 +39,16 @@ var loadAllPages = function(callback) {
 (function($) {
     if (!isIndex) return LOG.error('Must be on a grid view page, cant continue');
 
-    var startNumbering = function(btn) {
+    var startNumbering = function(callback) {
+        var btn = $('#calcButton')
+                    .attr('disabled', true)
+                    .html('Loading pages...');
+        
         loadAllPages(function() {
             var totalEpisodes = numberEpisodes();
             btn.html(totalEpisodes +' Episodes found');
+            
+            if ('function' === typeof callback) callback(totalEpisodes);
         });
     }
 
@@ -70,11 +76,7 @@ var loadAllPages = function(callback) {
             }).html('Number Episodes');
         
         numberEpisodesBtn.click(function() {
-            numberEpisodesBtn
-                .attr('disabled', true)
-                .html('Loading pages...');
-            
-            startNumbering(numberEpisodesBtn);
+            startNumbering();
         });
         
         LOG.info('Adding view of container to body.');
